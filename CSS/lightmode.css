@@ -185,7 +185,7 @@ body {
   }
   
   .dmToggle:before {
-    background-image: url('/public/images/SunIcon.png');
+    background-image: url('/images/SunIcon.png');
     background-size: cover; /* Make the image cover the entire div */
     background-position: center; /* Center the background image */
   }

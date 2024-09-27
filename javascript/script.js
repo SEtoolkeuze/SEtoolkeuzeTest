@@ -468,22 +468,22 @@ function toggleTheme() {
   var checkbox = document.getElementById('DMcheckbox');
   if (checkbox.checked) {
       // If checked, switch to dark mode CSS
-      stylesheet.href = '/public/CSS/darkmode.css';
-      DBGimage.src = '/public/images/DBG_white.png';
-      datastormsLogo.src = '/public/images/Datastorms_white.png';
+      stylesheet.href = '/CSS/darkmode.css';
+      DBGimage.src = '/images/DBG_white.png';
+      datastormsLogo.src = '/images/Datastorms_white.png';
 
   } else {
       // If unchecked, switch to light mode CSS
-      stylesheet.href = '/public/CSS/lightmode.css';
-      DBGimage.src = '/public/images/DBG_black.png';
-      datastormsLogo.src = '/public/images/Datastorms.png';
+      stylesheet.href = '/CSS/lightmode.css';
+      DBGimage.src = '/images/DBG_black.png';
+      datastormsLogo.src = '/images/Datastorms.png';
   }
   InfoIcons.forEach( InfoIcon => {
     if (checkbox.checked) {
-      InfoIcon.src = '/public/images/InfoIcon_White.png'
+      InfoIcon.src = '/images/InfoIcon_White.png'
     }
     else {
-      InfoIcon.src = '/public/images/InfoIcon_Black.png'
+      InfoIcon.src = '/images/InfoIcon_Black.png'
     }
   } )
   sumTotal()
