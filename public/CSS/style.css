@@ -1,0 +1,418 @@
+html {
+  height: 100%;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: xx-large;
+}
+
+header {
+  padding: 20px;
+  width: 97%;
+  position: relative;
+  left: 0;
+  z-index: 1;
+}
+
+  .headerContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pdfContainer {
+  }
+
+  #pdfButtonID {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  #pdfButtonID img {
+    width: 40px;
+    /* Adjust the size of the image */
+    height: auto;
+
+  }
+
+  .headerText {
+  }
+ 
+
+  .logoImageDBG {
+  }
+
+#resultSection {
+  position: -webkit-sticky;
+  /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  #resultSection {
+    padding: 0.5em 0.5em;
+    /* Reduce padding on mobile devices */
+    font-size: 0.9em;
+    /* Adjust font size for readability */
+    top: 0;
+    /* Adjust top position if necessary */
+  }
+}
+
+.resultsContainer {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  align-items: center
+}
+
+  .toolResultContainer {
+    display: inline-block;
+    vertical-align: middle;
+    /* Aligns the blocks vertically */
+    text-align: center;
+    /* Centers content horizontally */
+    font-family: 'Arial';
+    font-weight: 600;
+    font-size: 1em;
+    margin: 10px 20px;
+    /* Adds spacing between each result block */
+  }
+
+  .toolResultContainer p {
+    margin-left: -10px;
+  }
+
+  .toolResultContainer div {
+    margin: 5px 0 0 0;
+    /* Adds spacing between title and result */
+  }
+
+    .textTotalLevvr,
+    .textTotalR6,
+    .textTotalR5,
+    .textTotalData {
+      display: block;
+      /* Makes sure the text and image are in a block */
+      margin-bottom: 5px;
+      /* Adds some space between text and score */
+      text-align: center;
+      /* Centers the text and image */
+    }
+
+    .logoImageLevvr {
+      margin: 0px auto;
+      /* Center the logo within its container */
+      position: absolute;
+      /* Allow precise positioning */
+      left: 35%;
+      /* Move to the center of the container */
+      transform: translateX(0%);
+      /* Center the logo exactly at the middle */
+      margin-left: auto;
+    }
+    
+    .logoImageRelatics {
+      margin: 0px auto;
+      /* Center the logo within its container */
+      position: absolute;
+      /* Allow precise positioning */
+      left: 60%;
+      /* Move to the center of the container */
+      transform: translateX(0%);
+      /* Center the logo exactly at the middle */
+      margin-left: auto;
+    }
+
+    .scoreTotalLevvr,
+    .scoreTotalR6,
+    .scoreTotalR5,
+    .scoreTotalData {
+      width: 80px;
+      height: 35px;
+      margin: 0px auto;
+      text-align: center;
+      line-height: 35px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-shadow: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scoreTotalLevvrWin,
+    .scoreTotalR6Win,
+    .scoreTotalR5Win,
+    .scoreTotalDataWin {
+      width: 80px;
+      height: 35px;
+      margin: 10px auto;
+      text-align: center;
+      line-height: 35px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-shadow: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+
+.runResetContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  /* Adjust the gap as needed */
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Arial';
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.runButtonContainer {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+#resetButtonID, #formButton {
+  display: inline-block;
+  outline: 0;
+  appearance: none;
+  padding: 0px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  height: 25px;
+  transition: all 150ms ease-in-out 0s;
+
+}
+
+
+#resetButtonID:hover {
+  transform: translateY(0px);
+}
+
+#resetButtonID:active {
+  transform: translateY(2px);
+}
+
+#runButtonID {
+  display: inline-block;
+  outline: 0;
+  appearance: none;
+  padding: 0px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  height: 25px;
+  transition: all 150ms ease-in-out 0s;
+
+}
+
+#runButtonID:active {
+  transform: translateY(2px);
+}
+
+.totalSumContainer {
+  display: flex;
+  align-items: center; /* Vertically centers items */
+  gap: 10px; /* Optional: Adds space between the items */
+}
+
+.totalSumText, .sumValueContainer, .offTotalSum {
+  margin: 0; 
+}
+
+
+.sumValueContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sumValue {
+  width: 50px;
+  height: 25px;
+  margin: 10px 10px;
+  padding: 5px;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+
+
+
+.resetButtonContainer {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0px;
+  margin-right: 20px;
+
+}
+
+
+#sliderSection {
+  text-align: center;
+  font-weight: normal;
+  font-size: larger;
+  font-family: Arial;
+}
+
+.sliderContainer {
+  margin: 5px 5px;
+  padding: 20px;
+  border-radius: 8px;
+  display: inline-block;
+  width: 270px;
+}
+
+
+.sliderNameValueContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: -8px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+
+
+.sliderValueWeergave {
+  width: 30px;
+  height: 25px;
+  margin: 10px 10px;
+  padding: 5px;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.buttonSliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 30%;
+  height: 10px;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.button-87 {
+  background-size: 200% auto;
+  border-radius: 30px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 0 10px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-87:active {
+  transform: translate(0.5px, 0.5px);
+}
+
+
+@media print {
+
+  /* Hide the button when printing */
+  #pdfButtonID,
+  #tableButton,
+  .buttonContainer,
+  .runResetContainer {
+    display: none;
+  }
+
+  /* Style adjustments for print */
+  body {
+    font-size: 12pt;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #tableSection {
+    display: block;
+    /* Make the hidden section visible when printing */
+  }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Form Page</title>
+    <style>
+      html {
+        height: 100%;
+        width: 100%;
+        font-family: Arial, sans-serif;
+      }
+
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #D1E9F6;
+        color: #333;
+        text-align: center;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      #submitButtonID {
+      display: inline-block;
+      outline: 0;
+      appearance: none;
+      padding: 0px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      cursor: pointer;
+      background-color: 	#4CBB17;
+      border: 1px solid rgb(137, 151, 155);
+      box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
+      color: 	#ECFFDC;
+      font-size: 14px;
+      font-weight: 400;
+      height: 25px;
+      transition: all 150ms ease-in-out 0s;
+      :hover {
+          color: rgb(61, 79, 88);
+          background-color: rgb(255, 255, 255);
+          border: 1px solid rgb(93, 108, 116);
+          box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px, rgb(231 238 236) 0px 0px 0px 3px;}
+
+      }
+
+     /* #submitButtonID:focus {
+
+      }*/
+
+      #submitButtonID:hover  {
+        border: 1px solid rgb(137, 151, 155);
+        transform: translateY(0px);
+        background-color: #008000;
+        color: white;
+      }
+
+      #submitButtonID:active {
+        transform: translateY(2px);
+      }
+      
+        .importance-label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Selecteer impact</h1>
+
+    <form id="form">
+        <label for="importance">Hoe belangrijk vind je Templating en Reporting?</label>
+        <input type="range" id="importanceTempRep" name="importanceTempRep" min="1" max="10" step="1" value="5">
+        <p class="importance-label"><span id="importanceTempRepLabel">Neutraal</span></p>
+    
+        <label for="importance">Hoe belangrijk vind je de mogelijkheid tot integratie met andere tools?</label>
+        <input type="range" id="importanceInt" name="importanceInt" min="1" max="10" step="1" value="5">
+        <p class="importance-label"><span id="importanceIntLabel">Neutraal</span></p>
+        <button type="submit" id="submitButtonID">Submit</button>
+    
+    
+    
+    </form>
+
+
+
+    <script>
+        const sliderTempRep = document.getElementById('importanceTempRep');
+        const labelTempRep = document.getElementById('importanceTempRepLabel');
+        const sliderInt = document.getElementById('importanceInt');
+        const labelInt = document.getElementById('importanceIntLabel');
+       
+
+        // Map slider values (1-10) to importance levels
+        const importanceLevels = [
+            'Totaal niet belangrijk', // 1
+            'Vrijwel belangrijk',     // 2
+            'Weinig belangrijk',      // 3
+            'Licht belangrijk',       // 4
+            'Neutraal',               // 5
+            'Beetje belangrijk',      // 6
+            'Redelijk belangrijk',    // 7
+            'Belangrijk',             // 8
+            'Zeer belangrijk',        // 9
+            'Heel erg belangrijk'     // 10
+        ];
+
+        // Update the label text based on slider value
+        sliderTempRep.addEventListener('input', function() {
+            labelTempRep.textContent = importanceLevels[sliderTempRep.value - 1]; // Adjust for 0-based array
+        });
+
+        sliderInt.addEventListener('input', function() {
+            labelInt.textContent = importanceLevels[sliderInt.value - 1]; // Adjust for 0-based array
+        });
+
+        const form = document.getElementById('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the default form submission behavior
+            
+            // Store the form value in localStorage
+            localStorage.setItem('TempRepValue', sliderTempRep.value);
+            localStorage.setItem('IntValue', sliderInt.value);
+            
+            // Redirect to the second page
+            window.location.href = 'setool.html';
+        });
+    </script>
+</body>
+</html>

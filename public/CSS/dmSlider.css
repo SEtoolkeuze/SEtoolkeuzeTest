@@ -1,0 +1,53 @@
+.dmContainer {
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    }
+  
+
+  .dmSlider {
+  display: inline-block;
+  height: 20px;
+  position: relative;
+  width: 50px;
+  }
+  
+  .dmSlider input {
+  display:none;
+  }
+  
+  .dmToggle {
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  }
+  
+  .dmToggle:before {
+  bottom: 1px;
+  content: "";
+  height: 18px;
+  left: 1px;
+  position: absolute;
+  transition: .4s;
+  width: 18px;
+  }
+
+  
+  input:checked + .dmToggle:before {
+  transform: translateX(30px);
+  }
+  
+  .dmToggle.round {
+  border-radius: 34px;
+  }
+  
+  .dmToggle.round:before {
+  border-radius: 50%;
+  }

@@ -1,0 +1,20 @@
+Dark Theme pallet:
+
+/** CSS DARK THEME PRIMARY COLORS */
+--color-primary-100: #00aab0;
+--color-primary-200: #41b4b8;
+--color-primary-300: #60bdc1;
+--color-primary-400: #7bc7ca;
+--color-primary-500: #92d0d2;
+--color-primary-600: #a9d9db;
+/** CSS DARK THEME SURFACE COLORS */
+--color-surface-100: #17171f;
+--color-surface-200: #2c2c34;
+--color-surface-300: #43434a;
+--color-surface-400: #5b5b61;
+--color-surface-500: #747479;
+--color-surface-600: #8e8e93;
+
+
+Light theme pallet:
+

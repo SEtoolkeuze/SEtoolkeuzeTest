@@ -1,0 +1,193 @@
+body {
+    background-color: #eeeeee;
+    color: #333;
+  }
+  
+  header {
+    background-color: #eeeeee;
+  }  
+  
+  #resultSection {
+    background-color: #eeeeee;
+    border: 0px solid #ddd;
+  }
+
+      .scoreTotalLevvr,
+      .scoreTotalR6,
+      .scoreTotalR5,
+      .scoreTotalData {
+        background: linear-gradient(135deg, #add8e6 0%, #87ceeb 50%, #4682b4 100%);
+        border: 1px solid #1e90ff;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        color: #ffffff;
+      }
+  
+      .scoreTotalLevvrWin,
+      .scoreTotalR6Win,
+      .scoreTotalR5Win,
+      .scoreTotalDataWin {
+        background: linear-gradient(135deg, #90ee90 0%, #66cdaa 50%, #2e8b57 100%);
+        border: 1px solid #3cb371;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+        color: #ffffff;
+      }
+  
+  #resetButtonID, #formButton {
+    background-color: rgb(249, 251, 250);
+    border: 1px solid rgb(137, 151, 155);
+    box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
+    color: rgb(61, 79, 88);
+  }
+  
+  #runButtonID {
+    background-color: #4CBB17;
+    border: 1px solid rgb(137, 151, 155);
+    box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
+    color: #ECFFDC;
+  
+    :hover {
+      color: rgb(61, 79, 88);
+      background-color: rgb(255, 255, 255);
+      border: 1px solid rgb(93, 108, 116);
+      box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px, rgb(231 238 236) 0px 0px 0px 3px;
+    }
+  }
+
+  #runButtonID:hover {
+    border: 1px solid rgb(137, 151, 155);
+    transform: translateY(0px);
+    background-color: #008000;
+    color: white;
+  }
+  
+  .sumValue {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+    color: #000000;
+  }
+  
+  .sliderContainer {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sliderValueWeergave {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+    color: #000000;
+  }
+  
+  .slider {
+    background: #d3d3d3;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    background: #09ADED;
+  }
+  
+  .slider::-moz-range-thumb {
+    background: #04AA6D;
+  }
+  
+  
+  .button-87 {
+    background-color: #87ceeb;
+    border: 0px solid grey;
+    box-shadow: grey 1.5px 1.5px 0 0;
+    color: white;
+  }
+  
+  .button-87:hover {
+    background-color: #60ceeb;
+  }
+  
+  .button-87:active {
+    box-shadow: grey 1px 1px 0 0;
+  }
+  
+  
+  
+
+  
+  .scoresTable {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .scoresTable thead tr {
+    background-color: #009879;
+    color: #ffffff;
+  }
+  
+  .scoresTable tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .scoresTable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .scoresTable tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  
+  
+  #tableButton {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    color: rgba(0, 0, 0, 0.85);
+  }
+  
+  #tableButton:hover,
+  #tableButton:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+  
+  #tableButton:active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+
+  .tooltipSlider {
+    color: black;
+  }
+  
+  .tooltiptext {
+    background-color: lightgray;
+    color: black;
+  }
+  
+  .tooltiptext::after {
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltipSlider:hover .tooltiptext {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tooltipRun {
+    color: red;
+  }
+  
+  .tooltipRun:hover .tooltiptext {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+
+  .dmToggle {
+  background-color:  #99ccff;
+  }
+  
+  .dmToggle:before {
+    background-image: url('/images/SunIcon.png');
+    background-size: cover; /* Make the image cover the entire div */
+    background-position: center; /* Center the background image */
+  }
+
+  

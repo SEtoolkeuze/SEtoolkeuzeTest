@@ -1,0 +1,209 @@
+
+
+:root {
+/** CSS DARK THEME PRIMARY COLORS */
+--color-primary-100: #00aab0;
+--color-primary-200: #41b4b8;
+--color-primary-300: #60bdc1;
+--color-primary-400: #7bc7ca;
+--color-primary-500: #92d0d2;
+--color-primary-600: #a9d9db;
+/** CSS DARK THEME SURFACE COLORS */
+--color-surface-100: #17171f;
+--color-surface-200: #2c2c34;
+--color-surface-300: #43434a;
+--color-surface-400: #5b5b61;
+--color-surface-500: #747479;
+--color-surface-600: #8e8e93;
+}
+
+
+body {
+  background-color: var(--color-surface-100); /* ACHTERGROND KLEUR */ 
+  color: #ffffff; /* TEXT KLEUR */ 
+}
+
+header {
+  background-color: var(--color-surface-100) ; /* HEADER KLEUR */ 
+}  
+
+#resultSection {
+  background-color: var(--color-surface-100); /* RESULT SECTION KLEUR */ 
+  border: 0px solid #ddd;
+}
+
+    .scoreTotalLevvr,
+    .scoreTotalR6,
+    .scoreTotalR5,
+    .scoreTotalData {
+      background: linear-gradient(135deg, #add8e6 0%, #476c7a 50%, #213e55 100%);   /* KLEUR VAN DE BLAUWE RESULTAATPILLEN */ 
+      border: 0px solid #1e90ff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+      color: #ffffff;  
+    }
+
+    .scoreTotalLevvrWin,
+    .scoreTotalR6Win,
+    .scoreTotalR5Win,
+    .scoreTotalDataWin {
+      background: linear-gradient(135deg, #90ee90 0%, #3d7a66 50%, #1a5032 100%);   /* KLEUR VAN DE GROENE RESULTAATPIL */ 
+      border: 0px solid #3cb371;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+      color: #ffffff;
+    }
+
+ #resetButtonID, #formButton {
+  background-color: var(--color-primary-400); /* KLEUR VAN DE RESET KNOP */
+  border: 1px solid rgb(137, 151, 155);    
+  box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
+  color: black;  /* KLEUR VAN DE RESET KNOP TEKST*/                                                 
+}
+
+
+.dataStormsLogo{
+  filter: invert(100%);
+}
+
+
+#runButtonID {
+  background-color: #1ea71e;  /* KLEUR VAN DE RUN KNOP */
+  border: 1px solid rgb(39, 43, 44);
+  box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
+  color: black;  /* KLEUR VAN DE RUN KNOP TEKST*/   
+}
+
+#runButtonID:hover {
+  border: 1px solid rgb(137, 151, 155);
+  transform: translateY(0px);
+  background-color: #008000;
+  color: white;
+}
+
+.sumValue {
+  background: var(--color-surface-300);  /* KLEUR VAN HET SOMPILLETJE */
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+  color: white; /* KLEUR VAN HET SOMPILLETJE TEKST */
+}
+
+.sliderContainer {
+  background: var(--color-surface-200);  /* ACHTERGRONDKLEUR VAN DE SLIDER CONTAINERS */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sliderValueWeergave {
+  background: var(--color-surface-300); /* KLEUR VAN DE SLIDERPILLETJES*/
+  border: 1px solid #ddd;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
+  color: white; /* KLEUR VAN DE SLIDERPILLETJES TEKST*/
+}
+
+.slider {
+  background: var(--color-surface-600);       /* KLEUR VAN DE SLIDERS*/
+}
+
+.slider::-webkit-slider-thumb {
+  background: var(--color-primary-300);
+}
+
+.slider::-moz-range-thumb {
+  background: #c0c0c0;
+}
+
+
+.button-87 {
+  background-color: var(--color-primary-400); /* KLEUR VAN DE SLIDERBUTTONS*/
+  border: 0px solid grey;
+  box-shadow: grey 1.5px 1.5px 0 0;
+  color: black;
+}
+
+.button-87:hover {
+  background-color: var(--color-primary-200);
+}
+
+.button-87:active {
+  box-shadow: grey 1px 1px 0 0;
+}
+
+
+
+.scoresTable {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);  /* KLEUR VAN DE TABEL*/
+}
+
+.scoresTable thead tr {
+  background-color: var(--color-primary-300);
+  color: #ffffff;
+}
+
+.scoresTable tbody tr {
+  border-bottom: 0px solid #dddddd;
+}
+
+.scoresTable tbody tr:nth-of-type(even) {
+  background-color: var(--color-surface-300);
+}
+
+.scoresTable tbody tr:last-of-type {
+  border-bottom: 2px solid var(--color-primary-300);
+}
+
+
+#tableButton {
+  background-color: var(--color-primary-300);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+#tableButton:hover,
+#tableButton:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+#tableButton:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.tooltipSlider {
+  color: black;
+}
+
+.tooltiptext {
+  background-color: lightgray;
+  color: black;
+}
+
+.tooltiptext::after {
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltipSlider:hover .tooltiptext {
+  background-color: rgba(250, 250, 250, 0.95);
+}
+
+.tooltipRun {
+  color: rgb(134, 2, 2);
+}
+
+.tooltipRun:hover .tooltiptext {
+  background-color: rgba(250, 250, 250, 0.95);
+}
+
+  
+  .dmToggle:before {
+    background-image: url('/images/MoonIcon.png');
+    background-size: cover; /* Make the image cover the entire div */
+    background-position: center; /* Center the background image */
+  }
+  
+  input:checked + .dmToggle {
+  background-color: var(--color-surface-400);
+  }
+  

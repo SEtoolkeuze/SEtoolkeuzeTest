@@ -1,0 +1,64 @@
+.tabelButton-container {
+    display: inline-block;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0px;
+  }
+  
+  .scoresTable {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+  }
+  
+  .scoresTable thead tr {
+    text-align: left;
+  }
+  
+  .scoresTable th,
+  .scoresTable td {
+    padding: 12px 15px;
+  }
+
+  /*tabelsectie inklappen*/
+#tableSection {
+    display: none;
+  }
+  
+  
+  #tableButton {
+    align-items: center;
+    border-radius: .25rem;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: 30px;
+    height: 30px;
+  }
+  
+  #tableButton:hover {
+    transform: translateY(-1px);
+  }
+  
+  #tableButton:active {
+    transform: translateY(0);
+  }
