@@ -1,73 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        .login-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 300px;
-        }
-        input[type="text"], input[type="submit"] {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-        input[type="submit"] {
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #218838;
-        }
-        .error {
-            color: red;
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>WDM SE Tooling</title>
+  <link id="Stylesheet" rel="stylesheet" href="/public/CSS/style.css" />
+  <link id="lightThemeStylesheet" rel="stylesheet" href="/public/CSS/lightmode.css" />
+  <link id="dmSliderStylesheet" rel="stylesheet" href="/public/CSS/dmSlider.css" />
+  <link id="tooltipStylesheet" rel="stylesheet" href="/public/CSS/tooltip.css" />
+  
+
 </head>
+
+
 <body>
 
-<div class="login-container">
-    <h2>Vul toegangscode in</h2>
-    <form id="loginForm">
-        <input type="text" id="accessCode" placeholder="Vul toegangscode in" required>
-        <input type="submit" value="Submit">
-        <p class="error" id="errorMessage">Code verkeerd. Probeer opnieuw.</p>
-
-    </form>
+<div class="dmContainer">
+  <div class="goToForm"><button id="formButton" onclick="redirectToForm()">Form</button></div>  
+  <label class="dmSlider" for="DMcheckbox">
+       <input type="checkbox" id="DMcheckbox" onclick="toggleTheme()">
+        <div class="dmToggle round"></div>
+    </label>
 </div>
 
-<script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+<header>
+  <section id="pageHeader">
+    <div class="headerContainer">
+      <div class="pdfContainer">
+        <button id="pdfButtonID" onclick="printPage()"><img src="/public/images/PrintToPDF.png" alt="PrintToPDFIcon"></button>
+      </div>
+      <div class="headerText"><h1>SE Toolkeuze</h1></div>
+      <div class="logoImageDBG"><img id="DBGLogoBlack" class="DBGLogo" src='/public/images/DBG_black.png' height="50px"></div>
+    </div>
+  </section>
+</header>
 
-        // Replace '12345' with your desired code
-        const correctCode = '12345';  
-        const enteredCode = document.getElementById('accessCode').value;
+  
 
-        if (enteredCode === correctCode) {
-            window.location.href = 'setool.html'; // Redirect to the index.html page
-        } else {
-            document.getElementById('errorMessage').style.display = 'block';
-        }
-    });
-</script>
+<section id="resultSection">
+  <div class="resultsContainer">
+    <div class="toolResultContainer">
+      <p class="textTotalLevvr"><img height="13px" src="/public/images/Levvr-icon.ico"> Levvr:</p>
+      <div class="scoreTotalLevvr" id="totalScoreLevvrDisplay">0%</div>
+    </div>
+    <div class="toolResultContainer">
+      <p class="textTotalR6"><img height="13px" src="/public/images/relatics-logo-klein.png"> Relatics 6:</p>
+      <div class="scoreTotalR6" id="totalScoreR6Display">0%</div>
+    </div>
+    <div class="toolResultContainer">
+      <p class="textTotalR5"><img height="13px" src="/public/images/relatics-logo-klein.png"> Relatics 5:</p>
+      <div class="scoreTotalR5" id="totalScoreR5Display">0%</div>
+    </div>
+    <div class="toolResultContainer">
+      <p class="textTotalData"><img id="dataStormsLogo" height="13px" src="/public/images/Datastorms.png"> Datastorms:</p>
+      <div class="scoreTotalData" id="totalScoreDataDisplay">0%</div>
+    </div>
+  </div>
 
+
+  <div class="runResetContainer">
+    <div class="runButtonContainer">
+      <button id="runButtonID" onclick="runButton()">▶ Run</button>
+      <div class="tooltipRun" id="tooltipRun"><img class="exclamationMark" src="/public/images/exclamationMark.png" height="20px">
+        <span class="tooltiptext" id="tooltipText">Klik op "Run" om je nieuwe resultaat te bekijken!</span>
+      </div>
+    </div>
+    <div class="totalSumContainer">
+    <p class="totalSumText">Totaal:</p>
+    <div class="sumValueContainer">
+      <div class="sumValue" id="sum"> 80 </div>
+    </div>
+    <p class="offTotalSum">/ 80</p>
+    </div>
+    <div class="resetButtonContainer">
+      <button id="resetButtonID" onclick="resetSliderValues()">Reset</button>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+<section id="sliderSection">
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Templating
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">Mogelijkheid tot uitrol van wijzigingen over meerdere workspaces
+          tegelijk.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderTemp-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('templating', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('templating', -1)">-1</button>
+      <input class="slider" type="range" id="templating-slider" name="Templating" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('templating', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('templating', 'max')">max</button>
+
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Integratie andere tools
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">De mogelijkheid tot links leggen met andere software (e.g.
+          connectie met sharepoint).</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderInt-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('integratie', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('integratie', -1)">-1</button>
+      <input class="slider" type="range" id="integratie-slider" name="Integratie" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('integratie', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('integratie', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Reporting
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">Het bouwen en genereren van reports. Ook het bouwens van report
+          templates. Hierbij geldt ook gebruiksgemak voor de configurator.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderRep-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('reporting', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('reporting', -1)">-1</button>
+      <input class="slider" type="range" id="reporting-slider" name="Reporting" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('reporting', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('reporting', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Importeren
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">Het importeren van data in de software. Bijvoorbeeld vanuit een
+          excel bestand. Vooral belangrijk hier is het gemakt voor de configurator.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderImp-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('importeren', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('importeren', -1)">-1</button>
+      <input class="slider" type="range" id="importeren-slider" name="Importeren" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('importeren', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('importeren', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Model bouwen (visueel)
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">De gebruiksvriendelijkheid voor de configurator om een omgeving
+          samen te stellen en wijzigingen daarin door te voeren. Bijvoorbeeld hoeveel kennis en ervaring is er nodig?
+          Hoe inzichtelijk is het datamodel erachter?</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderModVis-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('modvis', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('modvis', -1)">-1</button>
+      <input class="slider" type="range" id="modvis-slider" name="Modvis" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('modvis', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('modvis', 'max')">max</button>
+    </div>
+  </div>
+
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Model bouwen (logica)
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText"></span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderModLog-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('modlog', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('modlog', -1)">-1</button>
+      <input class="slider" type="range" id="modlog-slider" name="Modlog" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('modlog', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('modlog', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Rollen/rechten
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">Het toewijzen van rechten van eindgebruikers. Wat krijgen ze te
+          zien? Wat mogen ze bewerken. Hierin geldt ook de configuratievrijheid voor de configurator hiervan.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderRollen-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('rollen', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('rollen', -1)">-1</button>
+      <input class="slider" type="range" id="rollen-slider" name="Rollen" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('rollen', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('rollen', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Kwaliteitscontrole
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">Hoe kun je de data in je omgeving controleren op kwaliteit? Hoe
+          geef je de eindgebruiker de mogelijkheid om deze controles uit te voeren.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderKwaliteit-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('kwaliteit', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('kwaliteit', -1)">-1</button>
+      <input class="slider" type="range" id="kwaliteit-slider" name="Rollen" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('kwaliteit', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('kwaliteit', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      User interface
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">Hoe duidelijk is de UI? Hoe zijn tabellen en is data weergegeven?
+          Denk ook aan het gebruik van kleuren etc.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderInterface-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('interface', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('interface', -1)">-1</button>
+      <input class="slider" type="range" id="interface-slider" name="Interface" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('interface', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('interface', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      User experience
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">Hoe gebruiksvriendelijk is de user interface voor zowel de
+          eindgebruiker en de configurator.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderUserexp-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('userexp', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('userexp', -1)">-1</button>
+      <input class="slider" type="range" id="userexp-slider" name="Userexp" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('userexp', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('userexp', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Versiebeheer
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">In hoeverre kun je versiebeheer toepassen? Kun je bijvoorbeeld
+          verschillende versies in verschillende omgevingen onderhouden die dezelfde oorspronkelijke eis
+          hebben.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderVersiebeheer-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('versiebeheer', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('versiebeheer', -1)">-1</button>
+      <input class="slider" type="range" id="versiebeheer-slider" name="Versiebeheer" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('versiebeheer', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('versiebeheer', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Configureervrijheid
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">In hoeverre is de configurator beperkt in het bouwen van de
+          omgeving? Hoeveel restricties heeft de software bijvoorbeeld voor grotere complexe vraagstukken.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderConfigureervrijheid-value"> 5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('configureervrijheid', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('configureervrijheid', -1)">-1</button>
+      <input class="slider" type="range" id="configureervrijheid-slider" name="Configureervrijheid" min="0" max="10"
+        value="5">
+      <button class="button-87" onclick="setSliderValue('configureervrijheid', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('configureervrijheid', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Ondersteuning
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">De support van het softwarebedrijf zelf in geval van bugs en het
+          ontwikkelen van nieuwe features.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderOndersteuning-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+
+      <button class="button-87" onclick="setSliderValue('ondersteuning', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('ondersteuning', -1)">-1</button>
+      <input class="slider" type="range" id="ondersteuning-slider" name="Ondersteuning" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('ondersteuning', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('ondersteuning', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Bibliotheek functionaliteit
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">In hoeverre kun je een bibliotheek gebruiken binnen het project?
+          Hoe werkt de communicatie tussen de bieb en de project omgevingen?</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderBibliotheek-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('bibliotheek', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('bibliotheek', -1)">-1</button>
+      <input class="slider" type="range" id="bibliotheek-slider" name="Bibliotheek" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('bibliotheek', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('bibliotheek', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Licentie kosten
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">De kosten van de software voor de eindgebruiker. Hoe is dit
+          ingeregeld?</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderLicentiekosten-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+      <button class="button-87" onclick="setSliderValue('licentiekosten', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('licentiekosten', -1)">-1</button>
+      <input class="slider" type="range" id="licentiekosten-slider" name="Licentiekosten" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('licentiekosten', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('licentiekosten', 'max')">max</button>
+    </div>
+  </div>
+
+  <div class="sliderContainer">
+    <div class="sliderNameValueContainer">
+      Workflows
+      <div class="tooltipSlider" id="tooltipSlider"><img class="informationIcon" src="/public/images/InfoIcon_Black.png" height="12px">
+        <span class="tooltiptext" id="tooltipText">Het inbouwen en afdwingen van bepaalde processen met
+          stappen.</span>
+      </div>
+      :
+      <span class="sliderValueWeergave" id="sliderWorkflows-value">5</span>
+    </div>
+    <div class="buttonSliderContainer">
+
+      <button class="button-87" onclick="setSliderValue('workflows', 'min')">min</button>
+      <button class="button-87" onclick="setSliderValue('workflows', -1)">-1</button>
+      <input class="slider" type="range" id="workflows-slider" name="Workflows" min="0" max="10" value="5">
+      <button class="button-87" onclick="setSliderValue('workflows', 1)">+1</button>
+      <button class="button-87" onclick="setSliderValue('workflows', 'max')">max</button>
+    </div>
+  </div>
+
+
+  </section>
+  <link id="scoresTableStyleSheet" rel="stylesheet" href="/CSS/scorestable.css" />
+
+  <div class="tabelbuttonContainer">
+    <p>Score tabel:</p> <button onclick="toggleTableSection()" id="tableButton">⮕</button>
+  </div>
+
+  <section id="tableSection">
+    <table class="scoresTable">
+      <thead>
+        <tr>
+          <th class="tg-0thz">KPI</th>
+          <th class="tg-0thz">Levvr</th>
+          <th class="tg-0thz">Relatics 6</th>
+          <th class="tg-0thz">Relatics 5</th>
+          <th class="tg-0thz">Datastorms</th>
+          <th class="tg-0thz" id="levvr-score-header">Levvr score</th>
+          <th class="tg-0thz" id="relatics-6-score-header">Relatics 6 score</th>
+          <th class="tg-0thz" id="relatics-5-score-header">Relatics 5 score</th>
+          <th class="tg-0thz" id="relatics-5-score-header">Datastorms score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tg-za14">Templating</td>
+          <td class="tableScoreLevvr" id="LevvrTemp">5</td>
+          <td class="tableScoreR6" id="R6Temp">1</td>
+          <td class="tableScoreR5" id="R5Temp">7</td>
+          <td class="tableScoreData" id="DataTemp">1</td>
+          <td class="tableCalcLevvr" id="Templating-levvr"></td>
+          <td class="tableCalcR6" id="Templating-relatics-6"></td>
+          <td class="tableCalcR5" id="Templating-relatics-5"></td>
+          <td class="tableCalcData" id="Templating-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Integratie andere tools</td>
+          <td class="tableScoreLevvr" id="LevvrInt">3</td>
+          <td class="tableScoreR6" id="R6Int">6</td>
+          <td class="tableScoreR5" id="R5Int">5</td>
+          <td class="tableScoreData" id="DataInt">1</td>
+          <td class="tableCalcLevvr" id="IntegratieAndereTools-levvr"></td>
+          <td class="tableCalcR6" id="IntegratieAndereTools-relatics-6"></td>
+          <td class="tableCalcR5" id="IntegratieAndereTools-relatics-5"></td>
+          <td class="tableCalcData" id="IntegratieAndereTools-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Reporting</td>
+          <td class="tableScoreLevvr" id='LevvrRep'>6</td>
+          <td class="tableScoreR6" id='R6Rep'>6</td>
+          <td class="tableScoreR5" id='R5Rep'>2</td>
+          <td class="tableScoreData" id="DataRep">1</td>
+          <td class="tableCalcLevvr" id="Reporting-levvr"></td>
+          <td class="tableCalcR6" id="Reporting-relatics-6"></td>
+          <td class="tableCalcR5" id="Reporting-relatics-5"></td>
+          <td class="tableCalcData" id="Reporting-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Importeren</td>
+          <td class="tableScoreLevvr" id="LevvrImp">5</td>
+          <td class="tableScoreR6" id="R6Imp">4</td>
+          <td class="tableScoreR5" id="R5Imp">6</td>
+          <td class="tableScoreData" id="DataImp">1</td>
+          <td class="tableCalcLevvr" id="Importeren-levvr"></td>
+          <td class="tableCalcR6" id="Importeren-relatics-6"></td>
+          <td class="tableCalcR5" id="Importeren-relatics-5"></td>
+          <td class="tableCalcData" id="Importeren-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Model bouwen/updaten (visueel)</td>
+          <td class="tableScoreLevvr" id="LevvrModVis">7</td>
+          <td class="tableScoreR6" id="R6ModVis">4</td>
+          <td class="tableScoreR5" id="R5ModVis">3</td>
+          <td class="tableScoreData" id="DataModVis">1</td>
+          <td class="tableCalcLevvr" id="ModVis-levvr"></td>
+          <td class="tableCalcR6" id="ModVis-relatics-6"></td>
+          <td class="tableCalcR5" id="ModVis-relatics-5"></td>
+          <td class="tableCalcData" id="ModVis-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Model bouwen/updaten (logica)</td>
+          <td class="tableScoreLevvr" id="LevvrModLog">6</td>
+          <td class="tableScoreR6" id="R6ModLog">7</td>
+          <td class="tableScoreR5" id="R5ModLog">2</td>
+          <td class="tableScoreData" id="DataModLog">1</td>
+          <td class="tableCalcLevvr" id="ModLog-levvr"></td>
+          <td class="tableCalcR6" id="ModLog-relatics-6"></td>
+          <td class="tableCalcR5" id="ModLog-relatics-5"></td>
+          <td class="tableCalcData" id="ModLog-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Rollen/rechten</td>
+          <td class="tableScoreLevvr" id="LevvrRollen">5</td>
+          <td class="tableScoreR6" id="R6Rollen">3</td>
+          <td class="tableScoreR5" id="R5Rollen">7</td>
+          <td class="tableScoreData" id="DataRollen">1</td>
+          <td class="tableCalcLevvr" id="Rollen/rechten-levvr"></td>
+          <td class="tableCalcR6" id="Rollen/rechten-relatics-6"></td>
+          <td class="tableCalcR5" id="Rollen/rechten-relatics-5"></td>
+          <td class="tableCalcData" id="Rollen/rechten-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Kwaliteitscontrole</td>
+          <td class="tableScoreLevvr" id="LevvrKwaliteit">4</td>
+          <td class="tableScoreR6" id="R6Kwaliteit">6</td>
+          <td class="tableScoreR5" id="R5Kwaliteit">4</td>
+          <td class="tableScoreData" id="DataKwaliteit">1</td>
+          <td class="tableCalcLevvr" id="Kwaliteitscontrole-levvr"></td>
+          <td class="tableCalcR6" id="Kwaliteitscontrole-relatics-6"></td>
+          <td class="tableCalcR5" id="Kwaliteitscontrole-relatics-5"></td>
+          <td class="tableCalcData" id="Kwaliteitscontrole-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">User interface</td>
+          <td class="tableScoreLevvr" id="LevvrInterface">2</td>
+          <td class="tableScoreR6" id="R6Interface">6</td>
+          <td class="tableScoreR5" id="R5Interface">4</td>
+          <td class="tableScoreData" id="DataInterface">1</td>
+          <td class="tableCalcLevvr" id="Userinterface-levvr"></td>
+          <td class="tableCalcR6" id="Userinterface-relatics-6"></td>
+          <td class="tableCalcR5" id="Userinterface-relatics-5"></td>
+          <td class="tableCalcData" id="Userinterface-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">User experience</td>
+          <td class="tableScoreLevvr" id="LevvrUserexp">4</td>
+          <td class="tableScoreR6" id="R6Userexp">5</td>
+          <td class="tableScoreR5" id="R5Userexp">5</td>
+          <td class="tableScoreData" id="DataUserexp">1</td>
+          <td class="tableCalcLevvr" id="Userexperience-levvr"></td>
+          <td class="tableCalcR6" id="Userexperience-relatics-6"></td>
+          <td class="tableCalcR5" id="Userexperience-relatics-5"></td>
+          <td class="tableCalcData" id="Userexperience-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Versiebeheer</td>
+          <td class="tableScoreLevvr" id="LevvrVersiebeheer">2</td>
+          <td class="tableScoreR6" id="R6Versiebeheer">2</td>
+          <td class="tableScoreR5" id="R5Versiebeheer">6</td>
+          <td class="tableScoreData" id="DataVersiebeheer">1</td>
+          <td class="tableCalcLevvr" id="Versiebeheer-levvr"></td>
+          <td class="tableCalcR6" id="Versiebeheer-relatics-6"></td>
+          <td class="tableCalcR5" id="Versiebeheer-relatics-5"></td>
+          <td class="tableCalcData" id="Versiebeheer-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Configureer vrijheid</td>
+          <td class="tableScoreLevvr" id="LevvrConfigureervrijheid">4</td>
+          <td class="tableScoreR6" id="R6Configureervrijheid">1</td>
+          <td class="tableScoreR5" id="R5Configureervrijheid">6</td>
+          <td class="tableScoreData" id="DataConfigureervrijheid">1</td>
+          <td class="tableCalcLevvr" id="Configureervrijheid-levvr"></td>
+          <td class="tableCalcR6" id="Configureervrijheid-relatics-6"></td>
+          <td class="tableCalcR5" id="Configureervrijheid-relatics-5"></td>
+          <td class="tableCalcData" id="Configureervrijheid-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Ondersteuning</td>
+          <td class="tableScoreLevvr" id="LevvrOndersteuning">7</td>
+          <td class="tableScoreR6" id="R6Ondersteuning">5</td>
+          <td class="tableScoreR5" id="R5Ondersteuning">4</td>
+          <td class="tableScoreData" id="DataOndersteuning">1</td>
+          <td class="tableCalcLevvr" id="Ondersteuning-levvr"></td>
+          <td class="tableCalcR6" id="Ondersteuning-relatics-6"></td>
+          <td class="tableCalcR5" id="Ondersteuning-relatics-5"></td>
+          <td class="tableCalcData" id="Ondersteuning-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Bibliotheek functionaliteit</td>
+          <td class="tableScoreLevvr" id="LevvrBibliotheek">4</td>
+          <td class="tableScoreR6" id="R6Bibliotheek">6</td>
+          <td class="tableScoreR5" id="R5Bibliotheek">6</td>
+          <td class="tableScoreData" id="DataBibliotheek">1</td>
+          <td class="tableCalcLevvr" id="Bibliotheek-levvr"></td>
+          <td class="tableCalcR6" id="Bibliotheek-relatics-6"></td>
+          <td class="tableCalcR5" id="Bibliotheek-relatics-5"></td>
+          <td class="tableCalcData" id="Bibliotheek-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Licentiekosten</td>
+          <td class="tableScoreLevvr" id="LevvrLicentiekosten">3</td>
+          <td class="tableScoreR6" id="R6Licentiekosten">4</td>
+          <td class="tableScoreR5" id="R5Licentiekosten">5</td>
+          <td class="tableScoreData" id="DataLicentiekosten">1</td>
+          <td class="tableCalcLevvr" id="Licentiekosten-levvr"></td>
+          <td class="tableCalcR6" id="Licentiekosten-relatics-6"></td>
+          <td class="tableCalcR5" id="Licentiekosten-relatics-5"></td>
+          <td class="tableCalcData" id="Licentiekosten-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14">Workflows</td>
+          <td class="tableScoreLevvr" id="LevvrWorkflows">7</td>
+          <td class="tableScoreR6" id="R6Workflows">5</td>
+          <td class="tableScoreR5" id="R5Workflows">6</td>
+          <td class="tableScoreData" id="DataWorkflows">1</td>
+          <td class="tableCalcLevvr" id="Workflows-levvr"></td>
+          <td class="tableCalcR6" id="Workflows-relatics-6"></td>
+          <td class="tableCalcR5" id="Workflows-relatics-5"></td>
+          <td class="tableCalcData" id="Workflows-datastorms"></td>
+        </tr>
+        <tr>
+          <td class="tg-za14"><strong>Total</strong></td>
+          <td class="tg-za14"></td>
+          <td class="tg-za14"></td>
+          <td class="tg-za14"></td>
+          <td class="tg-za14"></td>
+          <td class="tableTotalCalcLevvr" id="Total-levvr"><strong>0</strong></td>
+          <td class="tableTotalCalcR6" id="Total-relatics-6"><strong><span class="tableTotal"
+                id="tableTotal-relatics-6">0</span></strong></td>
+          <td class="tableTotalCalcR5" id="Total-relatics-5"><strong>0</strong></td>
+          <td class="tableTotalCalcData" id="Total-Datastorms"><strong>0</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+<script src="/public/javascript/script.js"></script>
 </body>
-</html> 
+
+</html>
